@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Creations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: #FFD700;
+        }
+
+        /* Header Styles */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(45deg, rgba(10,10,10,0.9), rgba(10,10,10,0.7)),
+                        url('pattern-bg.jpg');
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+            animation: fadeInUp 1s ease 0.2s;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #FFD700;
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-section {
+            padding: 5rem 0;
+            background: #1a1a1a;
+            overflow: hidden;
+    }
+
+        .testimonial-track {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+    }
+
+        .testimonial-wrapper {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+    }
+
+        .testimonial-card {
+            flex: 0 0 400px;
+            margin-right: 30px;
+            padding: 2rem;
+            background: #2a2a2a;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: transform 0.3s ease;
+    }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.3);
+    }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #cccccc;
+    }
+
+        .testimonial-author {
+            color: #FFD700;
+            font-weight: 600;
+    }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+    }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 300px;
+                margin-right: 20px;
+                padding: 1.5rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1rem;
+        }
+    }
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-link {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        /* Add to existing CSS */
+    .services-section {
+        padding: 5rem 0;
+        background: #0f0f0f;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .service-card {
+        background: #1a1a1a;
+        padding: 2.5rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(255, 215, 0, 0.05);
+        border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+        color: #FFD700;
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+    }
+
+    .service-card h3 {
+        color: #FFD700;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .service-card p {
+        color: #cccccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            padding: 2rem 1.5rem;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+        }
+    }
+     .portfolio-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+    }
+    .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.media-element {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+video.media-element {
+    background: #000; /* Black background for video placeholder */
+}
+
+.portfolio-item:hover .media-element {
+    transform: scale(1.03);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    border-radius: 0 0 8px 8px;
+}
+.testimonial-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+}
+
+.testimonial-card {
+    background: #2a2a2a;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    min-width: 300px;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .testimonial-carousel {
+        grid-auto-columns: 85%;
+    }
+}
+.no-testimonials {
+        text-align: center;
+        color: #f2ecec;
+        font-style: italic;
+        padding: 2rem;
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <h1>Aurora Creations</h1>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="admin-login.html" class="nav-link admin-access">Admin</a>
+            </div>
+        </nav>
+    </header>
+
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <h1>Creative. Strategic. Impactful.</h1>
+            <p>Crafting brands that leave lasting impressions</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPFM83uMQn_ebZ6E0yqm8kSvRYnIB-NsmQlknM2QwyBRe7RQ/viewform?usp=dialog" class="cta-btn">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- Repeat for each service -->
+                <div class="service-card">
+                    <i class="fas fa-palette service-icon"></i>
+                    <h3>Branding</h3>
+                    <p>Creating unique brand identities that resonate with your audience</p>
+                </div>
+                <!-- Digital Marketing -->
+                <div class="service-card">
+                    <i class="fas fa-bullhorn service-icon"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Social Media Management, Ads, SEO, Email Marketing</p>
+                </div>
+                <!-- Web Development -->
+                <div class="service-card">
+                    <i class="fas fa-code service-icon"></i>
+                    <h3>Web Development</h3>
+                    <p>Custom Websites, E-Commerce, UI/UX, Maintenance</p>
+                </div>
+                <!-- Video & Motion -->
+                <div class="service-card">
+                    <i class="fas fa-film service-icon"></i>
+                    <h3>Video & Motion</h3>
+                    <p>Promos, Animated Logos, Motion Graphics, Reels</p>
+                </div>
+                <!-- Photography -->
+                <div class="service-card">
+                      <i class="fas fa-camera service-icon"></i>
+                      <h3>Photography & Videography</h3>  
+                      <p>Product & Event Shoots, Commercial Ads, Editing</p>                    
+                </div>    
+                <!-- Printing -->
+                 <div class="service-card">
+                       <i class="fas fa-tshirt service-icon"></i> 
+                       <h3>Printing & Merchandise</h3>
+                       <p>Custom Apparel, Stationery, Banners, Billboards</p>
+                </div> 
+                <!-- Consulting -->
+                <div class="service-card">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <h3>Consulting & Strategy</h3>
+                        <p>Branding, Marketing, Business Growth</p>
+                </div>  
+                </div>
+                </section>
+                <!-- Add other services -->
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title"></h2>
+            <div class="portfolio-grid" id="portfolio-container"></div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonial-carousel" id="testimonial-carousel"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-info">
+                <a href="mailto:runesuashert@gmail.com" class="contact-link">runesuashert@gmail.com</a>
+                <a href="tel:+919056187359" class="contact-link">+919056187359</a>
+                <a href="https://wa.me/919056187359" class="cta-btn">WhatsApp Now!</a>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+       
+    const portfolio = JSON.parse(localStorage.getItem('aurora-portfolio')) || [];
+        const portfolioContainer = document.getElementById('portfolio-container');
+
+        function renderPortfolio() {
+            portfolioContainer.innerHTML = portfolio.map(item => `
+                <div class="portfolio-item">
+                    ${item.type.startsWith('video/') ? `
+                        <video controls class="media-element">
+                            <source src="${item.url}" type="${item.type}">
+                            Your browser does not support videos
+                        </video>
+                    ` : `
+                        <img src="${item.url}" alt="${item.title}" class="media-element">
+                    `}
+                    <div class="portfolio-overlay">
+                        <h3>${item.title}</h3>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Testimonials Handling
+        const testimonials = JSON.parse(localStorage.getItem('aurora-testimonials')) || [];
+        const testimonialCarousel = document.getElementById('testimonial-carousel');
+
+        function renderTestimonials() {
+            testimonialCarousel.innerHTML = testimonials.map(testimonial => `
+                <div class="testimonial-card">
+                    <p class="testimonial-text">${testimonial.text}</p>
+                    <h4 class="testimonial-author">– ${testimonial.author}</h4>
+                </div>
+            `).join('');
+            
+            // Initialize carousel
+            testimonialCarousel.style.display = 'flex';
+            testimonialCarousel.style.overflowX = 'auto';
+            testimonialCarousel.style.scrollSnapType = 'x mandatory';
+        }
+
+        // Initial renders
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortfolio();
+            renderTestimonials();
+        });
+        function loadTestimonials() {
+        // Use consistent localStorage key
+        const testimonials = JSON.parse(localStorage.getItem('aurora-testimonials')) || [];
+        const carousel = document.getElementById('testimonial-carousel');
+        
+        // Clear previous content
+        carousel.innerHTML = '';
+
+        if(testimonials.length === 0) {
+            carousel.innerHTML = `<p class="no-testimonials">No testimonials available yet</p>`;
+            return;
+        }
+
+        carousel.innerHTML = testimonials.map(testimonial => `
+            <div class="testimonial-card">
+                <p class="testimonial-text">${testimonial.text}</p>
+                <h4 class="testimonial-author">– ${testimonial.author}</h4>
+            </div>
+        `).join('');
+
+        // Initialize carousel
+        initCarousel();
+    }
+
+    function initCarousel() {
+        const carousel = document.getElementById('testimonial-carousel');
+        if(!carousel) return;
+
+        // Reset styles
+        carousel.style.display = 'grid';
+        carousel.style.gridAutoFlow = 'column';
+        carousel.style.gap = '2rem';
+        carousel.style.overflowX = 'auto';
+        carousel.style.padding = '1rem 0';
+    }
+
+    // Load on page load and add storage listener
+    document.addEventListener('DOMContentLoaded', loadTestimonials);
+    
+    // Update when storage changes
+    window.addEventListener('storage', loadTestimonials);
+    </script>
+</body>
+</html>
